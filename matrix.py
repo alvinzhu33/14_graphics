@@ -1,7 +1,7 @@
 import math
 
 def make_translate( x, y, z ):
-    pass
+    trans = [[1, 0, 0, x], [0, 1, 0, y], [0, 0, 1, z], [0, 0, 0, 1]]
 
 def make_scale( x, y, z ):
     pass

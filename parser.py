@@ -38,4 +38,17 @@ The file follows the following format:
 See the file script for an example of the file format
 """
 def parse_file( fname, points, transform, screen, color ):
-    pass
+    fileD = open(fname,'r');
+    lines = fileD.read().split("\n");
+    x = 0;
+    while x<len(lines):
+        line = lines[x]
+        if line in ["display", "apply", "ident"]:
+            x+=1;
+        else:
+            args = lines[x+1].split(" ");
+
+            if line == "line":
+                add_edge(args[
+            
+            x+=2;
