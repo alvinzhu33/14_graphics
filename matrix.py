@@ -1,5 +1,11 @@
 import math
 
+def transpose(old):
+    new = [[0,0,0,0], [0,0,0,0], [0,0,0,0], [0,0,0,0]];
+    for r in range(4):
+        for c in range(4):
+            new = old[c][r];
+
 def make_translate( x, y, z ):
     trans = [[1, 0, 0, x], [0, 1, 0, y], [0, 0, 1, z], [0, 0, 0, 1]]
     return trans;
@@ -24,8 +30,8 @@ def make_rotY( theta ):
 
 def make_rotZ( theta ):
     rad = math.radians(theta);
-    sin = math.sin(rad);
-    cos = math.cos(rad);
+    sin = int(math.sin(rad));
+    cos = int(math.cos(rad));
     rot = [[cos, -sin, 0, 0], [sin, cos, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]];
     return rot;
 

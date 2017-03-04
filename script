@@ -1,8 +1,7 @@
-a
-b
-c
-a
-sd
-as
-gfa
-sg
+line
+0 0 0 10 10 0
+ident
+rotate
+z 30
+apply
+display
