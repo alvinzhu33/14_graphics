@@ -49,7 +49,7 @@ def parse_file( fname, points, transform, screen, color ):
             if line == "ident":
                 ident(transform);
             if line == "apply":
-                points.append(transform);
+                points = (transform);
             if line == "display":
                 draw_lines(points, screen, color);
                 display(screen);
@@ -61,11 +61,12 @@ def parse_file( fname, points, transform, screen, color ):
 
             if line == "line":
                 add_edge(points, int(args[0]), int(args[1]), int(args[2]), int(args[3]), int(args[4]), int(args[5]));
+                #transform = points
             if line == "scale":
                 scaler = make_scale(args[0], args[1], args[2]);
                 transform = matrix_mult(scaler, transform);
             if line == "move":
-                trans = make_translate(args[0], args[1], args[2]);
+                trans = make_translate(int(args[0]), int(args[1]), int(args[2]));
                 transform = matrix_mult(trans, transform);
             if line == "rotate":
                 if args[0] == "x":
@@ -78,7 +79,10 @@ def parse_file( fname, points, transform, screen, color ):
             if line == "save":
                 display(points);
                 save_extension(points, args[0]);
-
+            #transform = points
             x+=2;
 
         print_matrix(points)
+        print("---")
+        print_matrix(transform)
+        print("_____")

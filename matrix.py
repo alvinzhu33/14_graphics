@@ -5,9 +5,11 @@ def transpose(old):
     for r in range(4):
         for c in range(4):
             new = old[c][r];
+    return new;
 
 def make_translate( x, y, z ):
     trans = [[1, 0, 0, x], [0, 1, 0, y], [0, 0, 1, z], [0, 0, 0, 1]]
+    trans = [[1, 0, 0, 0], [0, 1, 0, 0, 0], [0, 0, 1, 0], [x, y, z, 1]]
     return trans;
 
 def make_scale( x, y, z ):
@@ -33,6 +35,7 @@ def make_rotZ( theta ):
     sin = int(math.sin(rad));
     cos = int(math.cos(rad));
     rot = [[cos, -sin, 0, 0], [sin, cos, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]];
+    print_matrix("rot:" + str(rot))
     return rot;
 
 def print_matrix( matrix ):
