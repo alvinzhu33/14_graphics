@@ -8,14 +8,14 @@ The file follows the following format:
      Every command is a single character that takes up a line
      Any command that requires arguments must have those arguments in the second line.
      The commands are as follows:
-         line: add a line to the edge matrix - 
+         line: add a line to the edge matrix -
 	    takes 6 arguemnts (x0, y0, z0, x1, y1, z1)
-	 ident: set the transform matrix to the identity matrix - 
-	 scale: create a scale matrix, 
-	    then multiply the transform matrix by the scale matrix - 
+	 ident: set the transform matrix to the identity matrix -
+	 scale: create a scale matrix,
+	    then multiply the transform matrix by the scale matrix -
 	    takes 3 arguments (sx, sy, sz)
-	 translate: create a translation matrix, 
-	    then multiply the transform matrix by the translation matrix - 
+	 translate: create a translation matrix,
+	    then multiply the transform matrix by the translation matrix -
 	    takes 3 arguments (tx, ty, tz)
 	 rotate: create a rotation matrix,
 	    then multiply the transform matrix by the rotation matrix -
@@ -26,7 +26,7 @@ The file follows the following format:
 	 zrotate: create an z-axis rotation matrix,
 	    then multiply the transform matrix by the rotation matrix -
 	    takes 1 argument (theta)
-	 apply: apply the current transformation matrix to the 
+	 apply: apply the current transformation matrix to the
 	    edge matrix
 	 display: draw the lines of the edge matrix to the screen
 	    display the screen
@@ -44,11 +44,34 @@ def parse_file( fname, points, transform, screen, color ):
     while x<len(lines):
         line = lines[x]
         if line in ["display", "apply", "ident"]:
+            if line == "ident":
+                ident(transform);
+            if line == "apply":
+                points = transform;
+            if line == "display":
+                draw_lines(points);
+                display(screen);
+
             x+=1;
         else:
             args = lines[x+1].split(" ");
 
             if line == "line":
-                add_edge(args[
-            
+                add_edge(args[0],args[1],args[2],args[3],args[4],args[5]);
+            if line == "scale":
+                scaler = make_scale(args[0], args[1], args[2]);
+                matrix_mult(scaler, transform);
+            if line == "move":
+                trans = make_translate(args[0], args[1], args[2]);
+                matrix_mult(trans, transform);
+            if line == "rotate":
+                if args[0] == "x":
+                    rot = make_rotX(args[1]);
+                if args[0] == "y":
+                    rot = make_rotY(args[1]);
+                if args[0] == "z":
+                    rot = make_rotZ(args[1]);
+                matrix_mult(rot, transform);
+
+
             x+=2;

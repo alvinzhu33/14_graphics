@@ -2,18 +2,32 @@ import math
 
 def make_translate( x, y, z ):
     trans = [[1, 0, 0, x], [0, 1, 0, y], [0, 0, 1, z], [0, 0, 0, 1]]
+    return trans;
 
 def make_scale( x, y, z ):
-    pass
+    scale = [[x, 0, 0, 0], [0, y, 0, 0], [0, 0, z, 0], [0, 0, 0, 1]]
+    return scale;
 
-def make_rotX( theta ):    
-    pass
+def make_rotX( theta ):
+    rad = math.radians(theta);
+    sin = math.sin(rad);
+    cos = math.cos(rad);
+    rot = [[1, 0, 0, 0], [0, cos, -sin, 0], [0, sin, cos, 0], [0, 0, 0, 1]]
+    return rot;
 
 def make_rotY( theta ):
-    pass
+    rad = math.radians(theta);
+    sin = math.sin(rad);
+    cos = math.cos(rad);
+    rot = [[cos, 0, sin, 0, 0], [0, 1, 0, 0], [-sin, 0, cos, 0], [0, 0, 0, 1]]
+    return rot;
 
 def make_rotZ( theta ):
-    pass
+    rad = math.radians(theta);
+    sin = math.sin(rad);
+    cos = math.cos(rad);
+    rot = [[cos, -sin, 0, 0], [sin, cos, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]];
+    return rot;
 
 def print_matrix( matrix ):
     s = ''
@@ -35,7 +49,7 @@ def scalar_mult( matrix, s ):
     for r in range( len( matrix[0] ) ):
         for c in range( len(matrix) ):
             matrix[c][r]*= s
-            
+
 #m1 * m2 -> m2
 def matrix_mult( m1, m2 ):
 
@@ -43,7 +57,7 @@ def matrix_mult( m1, m2 ):
     for row in m2:
         #get a copy of the next point
         tmp = row[:]
-        
+
         for r in range(4):
             m2[point][r] = (m1[0][r] * tmp[0] +
                             m1[1][r] * tmp[1] +
