@@ -1,7 +1,7 @@
 import math
 
 def transpose(old):
-    new = [[0,0,0,0], [0,0,0,0], [0,0,0,0], [0,0,0,0]];
+    new = [[0.0,0.0,0.0,0.0], [0.0,0.0,0.0,0.0], [0.0,0.0,0.0,0.], [0.,0.,0.,0.]];
     #print("here: " + str(new))
     #print("here: " + str(old))
     for r in range(4):
@@ -23,22 +23,21 @@ def make_rotX( theta ):
     rad = math.radians(theta);
     sin = math.sin(rad);
     cos = math.cos(rad);
-    rot = [[1, 0, 0, 0], [0, cos, -sin, 0], [0, sin, cos, 0], [0, 0, 0, 1]]
+    rot = [[1.0, 0.0, 0.0, 0.0], [0.0, cos, -sin, 0.0], [0.0, sin, cos, 0.0], [0.0, 0.0, 0.0, 1.0]]
     return transpose(rot);
 
 def make_rotY( theta ):
     rad = math.radians(theta);
     sin = math.sin(rad);
     cos = math.cos(rad);
-    rot = [[cos, 0, sin, 0, 0], [0, 1, 0, 0], [-sin, 0, cos, 0], [0, 0, 0, 1]]
+    rot = [[cos, 0.0, sin, 0.0, 0.], [0., 1., 0., 0.], [-sin, 0., cos, 0.], [0., 0., 0., 1.]]
     return transpose(rot);
 
 def make_rotZ( theta ):
     rad = math.radians(theta);
-    sin = int(math.sin(rad));
-    cos = int(math.cos(rad));
-    rot = [[cos, -sin, 0, 0], [sin, cos, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]];
-    print_matrix("rot:" + str(rot))
+    sin = math.sin(rad);
+    cos = math.cos(rad);
+    rot = [[cos, -sin, 0.0, 0.0], [sin, cos, 0.0, 0.0], [0.0, 0.0, 1, 0.0], [0.0, 0., 0., 1.]];
     return rot;
 
 def print_matrix( matrix ):
@@ -75,7 +74,7 @@ def matrix_mult( m1, m2 ):
                             m1[1][r] * tmp[1] +
                             m1[2][r] * tmp[2] +
                             m1[3][r] * tmp[3])
-            m2[point][r] = int(m2[point][r])
+            m2[point][r] = m2[point][r]
         point+= 1
 
 

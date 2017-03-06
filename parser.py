@@ -60,12 +60,12 @@ def parse_file( fname, points, transform, screen, color ):
             print(str(args) + "\n")
 
             if line == "line":
-                add_edge(points, int(args[0]), int(args[1]), int(args[2]), int(args[3]), int(args[4]), int(args[5]));
+                add_edge(points, float(args[0]), float(args[1]), float(args[2]), float(args[3]), float(args[4]), float(args[5]));
             if line == "scale":
                 scaler = make_scale(float(args[0]), float(args[1]), float(args[2]));
                 matrix_mult(scaler, transform);
             if line == "move":
-                trans = make_translate(int(args[0]), int(args[1]), int(args[2]));
+                trans = make_translate(float(args[0]), float(args[1]), float(args[2]));
                 matrix_mult(trans, transform);
             if line == "rotate":
                 if args[0] == "x":
@@ -74,6 +74,8 @@ def parse_file( fname, points, transform, screen, color ):
                     rot = make_rotY(float(args[1]));
                 if args[0] == "z":
                     rot = make_rotZ(float(args[1]));
+                print("\n\nRotation:")
+                print_matrix(rot)
                 matrix_mult(rot, transform);
             if line == "save":
                 display(points);
