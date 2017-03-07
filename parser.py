@@ -81,8 +81,10 @@ def parse_file( fname, points, transform, screen, color ):
                 print_matrix(rot)
                 matrix_mult(rot, transform);
             if line == "save":
-                display(points);
-                save_extension(points, args[0]);
+                clear_screen(screen);
+                draw_lines(points, screen, color);
+                save_extension(screen, args[0]);
+                time.sleep(1)
             #transform = points
             x+=2;
 
