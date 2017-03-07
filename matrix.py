@@ -35,9 +35,9 @@ def make_rotY( theta ):
 
 def make_rotZ( theta ):
     rad = math.radians(theta);
-    sin = math.sin(rad);
-    cos = math.cos(rad);
-    rot = [[cos, -sin, 0.0, 0.0], [sin, cos, 0.0, 0.0], [0.0, 0.0, 1, 0.0], [0.0, 0., 0., 1.]];
+    sin = math.sin(-rad);
+    cos = math.cos(-rad);
+    rot = [[cos, -sin, 0.0, 0.0], [sin, cos, 0.0, 0.0], [0.0, 0.0, 1.0, 0.0], [0.0, 0., 0., 1.]];
     return rot;
 
 def print_matrix( matrix ):

@@ -1,6 +1,7 @@
 from display import *
 from matrix import *
 from draw import *
+import time
 
 """
 Goes through the file named filename and performs all of the actions listed in that file.
@@ -51,8 +52,10 @@ def parse_file( fname, points, transform, screen, color ):
             if line == "apply":
                 matrix_mult(transform, points);
             if line == "display":
+                clear_screen(screen);
                 draw_lines(points, screen, color);
                 display(screen);
+                time.sleep(1)
 
             x+=1;
         else:
