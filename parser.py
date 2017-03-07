@@ -42,10 +42,10 @@ def parse_file( fname, points, transform, screen, color ):
     fileD = open(fname,'r');
     lines = fileD.read().split("\n");
     x = 0;
-    print("length: " + str(len(lines)) + "\n")
+    #print("length: " + str(len(lines)) + "\n")
     while x<len(lines)-1:
         line = lines[x]
-        print(str(x) + ": " + line)
+        #print(str(x) + ": " + line)
         if line in ["display", "apply", "ident"]:
             if line == "ident":
                 ident(transform);
@@ -60,7 +60,7 @@ def parse_file( fname, points, transform, screen, color ):
             x+=1;
         else:
             args = lines[x+1].split(" ");
-            print(str(args) + "\n")
+            #print(str(args) + "\n")
 
             if line == "line":
                 add_edge(points, float(args[0]), float(args[1]), float(args[2]), float(args[3]), float(args[4]), float(args[5]));
@@ -77,8 +77,8 @@ def parse_file( fname, points, transform, screen, color ):
                     rot = make_rotY(float(args[1]));
                 if args[0] == "z":
                     rot = make_rotZ(float(args[1]));
-                print("\n\nRotation:")
-                print_matrix(rot)
+                #print("\n\nRotation:")
+                #print_matrix(rot)
                 matrix_mult(rot, transform);
             if line == "save":
                 clear_screen(screen);
@@ -88,7 +88,7 @@ def parse_file( fname, points, transform, screen, color ):
             #transform = points
             x+=2;
 
-        print_matrix(points)
-        print("---")
-        print_matrix(transform)
-        print("_____")
+        #print_matrix(points)
+        #print("---")
+        #print_matrix(transform)
+        #print("_____")
