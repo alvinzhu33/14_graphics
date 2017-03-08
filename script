@@ -1,9 +1,45 @@
 line
-5 10 5 0 4 5
+5 10 5 0 0 5
 line
-5 10 5 10 4 5
+5 10 5 10 0 5
 line
-0 4 5 2 2 5
+0 0 5 5 3 0
 line
-10 4 5 8 2 5
+10 0 5 5 3 0
+line
+0 0 5 5 3 10
+line
+10 0 5 5 3 10
+line
+5 3 10 5 10 5
+line
+5 3 0 5 10 5
+line
+5 3 0 5 3 10
 display
+ident
+scale
+15 20 13
+apply
+display
+ident
+move
+200 100 0
+apply
+display
+ident
+rotate
+z 20
+rotate
+y 20
+rotate
+x 20
+apply
+display
+ident
+rotate
+z 20
+apply
+display
+save
+pic.png
