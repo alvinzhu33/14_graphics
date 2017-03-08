@@ -60,9 +60,6 @@ def parse_file( fname, points, transform, screen, color ):
             x+=1;
         elif line in ["line", "scale", "move", "rotate", "save"]:
             args = lines[x+1].split(" ");
-            while args[0].find("#", 0, 1) != -1:
-                args = lines[x+2].split(" ");
-                x+=1;
             #print(str(args) + "\n")
 
             if line == "line":
